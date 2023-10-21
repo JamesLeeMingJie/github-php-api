@@ -1,0 +1,12 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.8",
+        "http-interop/http-factory-guzzle": "^1.2",
+        "knplabs/github-api": "^3.12"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
