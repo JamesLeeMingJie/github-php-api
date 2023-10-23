@@ -4,21 +4,27 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $client = new \Github\Client();
 
-$client->authenticate('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', null, authMethod: 'AUTH_CLIENT_ID');
+// $authMethod = new \Github\AuthMethod();
 
-$username = 'JamesLeeMingJie';
+// $client->authenticate('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', null, Github\AuthMethod::ACCESS_TOKEN);
 
-$repository = 'github-php-api';
+// $username = 'JamesLeeMingJie';
 
-$path = "/images";
+// $repository = 'github-php-api';
 
-$content = "Some content";
+$expectedArray = [
+  'content' => 'images/cat.jpeg',
+];
 
-$commitMessage = 'Create a file';
+$path = "images/dummy.jpeg";
+
+$imageContent = "images/cat.jpeg";
+
+$commitMessage = 'Created a cat file';
 
 $committer = array('name' => $username, 'email' => 'lee_mingjie@hotmail.com');
 
-$fileInfo = $client->api('repo')->contents()->create($username, $repository, $path, $content, $commitMessage, '', $committer);
+// $fileInfo = $client->api('repo')->contents()->create($username, $repository, $path, $imageContent, $commitMessage, 'main', $committer);
 
 ?>
 
@@ -27,29 +33,3 @@ $fileInfo = $client->api('repo')->contents()->create($username, $repository, $pa
   print_r($fileInfo);
   ?>
 </pre>
-
-<?php
-// $github = new Client();
-// $github->authenticate('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', null, Client::AUTH_ACCESS_TOKEN);
-
-// $repository = 'JamesLeeMingJie/github-php-api';
-// $filePath = 'docs/example.txt';
-// $fileContent = file_get_contents($filePath);
-
-// $result = $github->repos()->contents()->create(
-//   'JamesLeeMingJie',
-//   $repository,
-//   $filePath,
-//   'Upload file from admin panel',
-//   $fileContent
-// );
-
-// print_r($result);
-
-// if ($result['content']['sha']) {
-//   echo "Successful upload";
-// } else {
-//   echo "Upload fail";
-// }
-
-?>
